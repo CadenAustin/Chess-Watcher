@@ -3,3 +3,11 @@
   margin: auto;
   width: 50%;
 }
+
+.app-grid {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  grid-template-areas: 'board info';
+}

@@ -1,6 +1,10 @@
 .board-container {
+    grid-area: board;
+
     min-width: 400px;
     min-height: 400px;
+    max-width: 600px;
+    max-height: 600px;
 }
 
 .board-container-inner {
@@ -11,4 +15,8 @@
 
     border: 3px solid black;
     aspect-ratio: 1;
+}
+
+.iui-text-headline {
+    margin: 0px;
 }
