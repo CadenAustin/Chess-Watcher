@@ -13,7 +13,6 @@ interface Props {
 }
 
 function renderSwitch(pieceKey: string): ReactElement {
-    console.log(pieceKey);
     switch (pieceKey.toLowerCase()){
         case 'b':
             return <Bishop value={pieceKey} />
@@ -29,7 +28,7 @@ function renderSwitch(pieceKey: string): ReactElement {
             return <Rook value={pieceKey} />
     }
 
-    return <h1></h1>
+    return <></>
 }
 
 function Piece({ pieceKey }: Props): ReactElement {
