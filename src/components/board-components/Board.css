@@ -1,0 +1,14 @@
+.board-container {
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.board-container-inner {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+    border: 3px solid black;
+    aspect-ratio: 1;
+}

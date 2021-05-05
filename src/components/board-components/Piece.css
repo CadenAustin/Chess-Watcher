@@ -1,0 +1,12 @@
+.board-container-piece {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.board-container-piece img {
+    width: 95%;
+    height: 95%;
+}

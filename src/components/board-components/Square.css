@@ -1,0 +1,11 @@
+.dark {
+    background-color: rgb(111, 143, 114);
+}
+
+.light {
+    background-color: rgb(173, 189, 143);
+}
+
+.board-container-square {
+    aspect-ratio: 1;
+}
