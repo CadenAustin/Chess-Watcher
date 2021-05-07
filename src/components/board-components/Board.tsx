@@ -1,11 +1,8 @@
 import React, { ReactElement } from "react";
 import { Headline } from "@itwin/itwinui-react";
-import internal from "node:stream";
 
 import "./Board.css";
 import Square from "./Square";
-import Rank from "./Rank";
-import File from "./File";
 
 interface Props {
     blackPlayer: string;

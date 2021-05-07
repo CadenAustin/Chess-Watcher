@@ -1,11 +1,10 @@
-import React, { Component,  useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from '@itwin/itwinui-react'
 import ndjsonStream from "can-ndjson-stream"
 
 import './App.css'
 import Header from './components/general-components/Header'
 import Board from './components/board-components/Board'
-import GameInfo from './components/general-components/GameInfo'
 
 
 function getIndexFromCharacter(char: string): Number {
@@ -57,7 +56,7 @@ function parseFENString(fen: string): Array<Array<string>> {
 }
 
 function lastMoveToCoords(lastMove: string): any {
-  let ret = Array();
+  let ret: any = [];
   let split: RegExpMatchArray | null = lastMove.match(/.{2}/g);
 
   if (split) {
@@ -77,9 +76,7 @@ function App() {
   const [lastMove, setLastMove] = useState([[], []]);
   
   const [whitePlayer, setWhitePlayer] = useState("");
-  const [whiteCaptured, setWhiteCaptured] = useState("");
   const [blackPlayer, setBlackPlayer] = useState("");
-  const [blackCaptured, setBlackCaptured] = useState("");
 
   const [doneStatus, setDoneStatus] = useState(false);
 
@@ -120,6 +117,7 @@ function App() {
 
     getFen();
   }, [doneStatus]);
+
   let squareArray: Array<Array<string>> = parseFENString(fenString);
 
 
@@ -128,7 +126,6 @@ function App() {
       <Header />
       <div className="app-grid">
         <Board blackPlayer={blackPlayer} whitePlayer={whitePlayer} squareArray={squareArray} lastMove={lastMove} />
-        <GameInfo />
       </div>
     </div>
   );

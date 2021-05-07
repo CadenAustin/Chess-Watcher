@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { AppBar, Typography, Button, Toolbar } from '@material-ui/core'
+import { AppBar, Typography, Toolbar } from '@material-ui/core'
 
 function Header(): ReactElement {
     return (

@@ -9,5 +9,5 @@
   justify-items: center;
   align-items: center;
 
-  grid-template-areas: 'board info';
+  grid-template-areas: 'board';
 }
