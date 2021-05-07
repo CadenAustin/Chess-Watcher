@@ -9,9 +9,6 @@ function Header(): ReactElement {
                     <Typography variant="h6" color="inherit">
                         Chess Watcher
                     </Typography>
-                    <Button color="inherit">
-                        New Game
-                    </Button>
                 </Toolbar>
             </AppBar>
         </div>

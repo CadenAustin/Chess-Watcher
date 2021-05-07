@@ -8,7 +8,7 @@ interface Props {
 
 function Bishop({ value }: Props): ReactElement {
     return (
-        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Bishop"/>
+        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Bishop" className="bishop piece-image"/>
     )
 }
 

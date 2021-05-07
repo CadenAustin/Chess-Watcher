@@ -1,0 +1,8 @@
+.info-container {
+    grid-area: info;
+
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 600px;
+    max-height: 600px;
+}

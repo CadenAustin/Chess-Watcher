@@ -8,7 +8,7 @@ interface Props {
 
 function Queen({ value }: Props): ReactElement {
     return (
-        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Queen"/>
+        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Queen" className="queen piece-image"/>
     )
 }
 

@@ -8,7 +8,7 @@ interface Props {
 
 function Pawn({ value }: Props): ReactElement {
     return (
-        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Pawn"/>
+        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Pawn" className="pawn piece-image"/>
     )
 }
 

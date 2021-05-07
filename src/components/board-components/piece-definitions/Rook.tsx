@@ -8,7 +8,7 @@ interface Props {
 
 function Rook({ value }: Props): ReactElement {
     return (
-        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Rook"/>
+        <img src={value === value.toUpperCase() ? WhitePiece : BlackPiece} alt="Rook" className="rook piece-image"/>
     )
 }
 
