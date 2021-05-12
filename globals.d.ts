@@ -4,3 +4,4 @@ declare module "*.svg" {
 }
 
 declare module "can-ndjson-stream";
+declare module 'react-country-flag';

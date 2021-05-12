@@ -1,0 +1,126 @@
+import React, { useState, useEffect } from 'react'
+import ndjsonStream from "can-ndjson-stream"
+
+import Board from '../board-components/Board'
+
+function getIndexFromCharacter(char: string): Number {
+  switch (char) {
+    case "a":
+      return 0;
+    case "b":
+      return 1;
+    case "c":
+      return 2;
+    case "d":
+      return 3;
+    case "e":
+      return 4;
+    case "f":
+      return 5;
+    case "g":
+      return 6;
+    case "h":
+      return 7;
+  }
+
+  return 8;
+}
+
+function parseFENString(fen: string): Array<Array<string>> {
+  let squareArray: Array<Array<string>> = [...Array(8)].map((x) => Array(0));
+
+  let splitString: string = fen.split(" ")[0];
+  let rows: Array<string> = splitString.split("/");
+
+  for (let ranks = 0; ranks < 8; ranks++) {
+    for (let charIndex = 0; charIndex < rows[ranks].length; charIndex++) {
+      let character = rows[ranks][charIndex];
+      if (!isNaN(character as any)) {
+        for (
+          let toAddIndex = 0;
+          toAddIndex < parseInt(character);
+          toAddIndex++
+        ) {
+          squareArray[ranks].push("O");
+        }
+        continue;
+      }
+      squareArray[ranks].push(character);
+    }
+  }
+  return squareArray;
+}
+
+function lastMoveToCoords(lastMove: string): any {
+  let ret: any = [];
+  let split: RegExpMatchArray | null = lastMove.match(/.{2}/g);
+
+  if (split) {
+    split.forEach((val) => {
+      ret.push([getIndexFromCharacter(val[0]), 8 - parseInt(val[1])]);
+    });
+  }
+  return ret;
+}
+
+function LiveGame() {
+  const [fenString, setFenString] = useState(
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+  );
+  const [lastMove, setLastMove] = useState([[], []]);
+  
+  const [whitePlayer, setWhitePlayer] = useState("");
+  const [blackPlayer, setBlackPlayer] = useState("");
+
+  const [doneStatus, setDoneStatus] = useState(false);
+
+  useEffect(() => {
+    async function getFen() {
+      const res = await fetch("https://lichess.org/api/tv/feed", {
+        method: "get",
+      });
+      const stream = ndjsonStream(res.body);
+      const reader = stream.getReader();
+      setDoneStatus(true);
+
+      async function read(res: any) {
+        if (res.value.t !== "fen") {
+          if (res.value.d.players[0].color === "white") {
+            setWhitePlayer(res.value.d.players[0].user.name);
+            setBlackPlayer(res.value.d.players[1].user.name);
+          } else {
+            setWhitePlayer(res.value.d.players[1].user.name);
+            setBlackPlayer(res.value.d.players[0].user.name);
+          }
+        }
+        if (res.done) {
+          setDoneStatus(false);
+          return;
+        }
+
+        if (res.value.t === "fen") {
+          setLastMove(lastMoveToCoords(res.value.d.lm));
+        }
+        setFenString(res.value.d.fen);
+        reader.read().then(read);
+      }
+
+      reader.read().then(read);
+    }
+
+    getFen();
+  }, [doneStatus]);
+
+  let squareArray: Array<Array<string>> = parseFENString(fenString);
+
+
+  return (
+    <div className="App">
+      <div className="app-grid">
+        <Board blackPlayer={blackPlayer} whitePlayer={whitePlayer} squareArray={squareArray} lastMove={lastMove} />
+      </div>
+    </div>
+  );
+}
+
+export default LiveGame;

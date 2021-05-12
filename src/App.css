@@ -8,6 +8,18 @@
   display: grid;
   justify-items: center;
   align-items: center;
+  text-align: center;
 
   grid-template-areas: 'board';
+}
+
+
+.iui-text-headline,
+.iui-text-subheading {
+  margin: 0px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

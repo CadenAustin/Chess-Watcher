@@ -14,7 +14,7 @@ interface Props {
 function Board({ blackPlayer, whitePlayer, squareArray, lastMove }: Props): ReactElement {
   return (
     <div className="board-container center">
-      <Headline className="black-player-name">{blackPlayer}</Headline>
+      <Headline className="black-player-name"><a href={"/user/" + blackPlayer}>{blackPlayer}</a></Headline>
       <div className="board-container-inner">
         {squareArray.map((val, index) => {
           return val.map((pieceKey, internalIndex) => {
@@ -33,7 +33,7 @@ function Board({ blackPlayer, whitePlayer, squareArray, lastMove }: Props): Reac
           });
         })}
       </div>
-      <Headline className="white-player-name">{whitePlayer}</Headline>
+      <Headline className="white-player-name"><a href={"/user/" + whitePlayer}>{whitePlayer}</a></Headline>
     </div>
   );
 }
