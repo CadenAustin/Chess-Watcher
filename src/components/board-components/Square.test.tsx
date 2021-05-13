@@ -8,23 +8,9 @@ const assertBaseElements = (container: HTMLElement) => {
     expect(container.querySelector('.king')).toBeTruthy();
 };
 
-it("render light square", () => {
+it("render square", () => {
     const { container } = render(<Square color={true} highlight={false} pieceKey="k" testId="0"/>)
     assertBaseElements(container);
 
-    expect(container.querySelector(".light")).toBeTruthy();
-})
-
-it("render dark square", () => {
-    const { container } = render(<Square color={false} highlight={false} pieceKey="k" testId="0"/>)
-    assertBaseElements(container);
-
-    expect(container.querySelector(".dark")).toBeTruthy();
-})
-
-it("render highlighted square", () => {
-    const { container } = render(<Square color={true} highlight={true} pieceKey="k" testId="0"/>)
-    assertBaseElements(container);
-
-    expect(container.querySelector(".highlight")).toBeTruthy();
+    expect(container.querySelector(".board-container-square")).toBeTruthy();
 })

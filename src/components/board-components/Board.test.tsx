@@ -44,13 +44,3 @@ it("render multi row of kings and spaces", () => {
     expect(container.querySelectorAll('.board-container-square').length).toBe(24);
     expect(container.querySelectorAll(".king").length).toBe(16);
 })
-
-it("render highlighting", () => {
-    const arr = [Array(8).fill("k")]
-    const { container } = render(<Board blackPlayer="" whitePlayer="" squareArray={arr} lastMove={[[4, 0]]} />);
-    
-    assertBaseElements(container);
-
-    expect(container.querySelector(".highlight")).toBeTruthy();
-    expect(getByTestId(container, "4")).toBeTruthy();
-})
