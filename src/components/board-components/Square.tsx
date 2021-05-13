@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import Piece from './Piece'
 import './Square.css'
-import { useColorContext } from '../context-components/ColorContext'
+import { useColorContext } from '../../context/ColorContext'
 
 interface Props {
     color: boolean;

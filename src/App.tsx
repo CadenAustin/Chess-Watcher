@@ -6,7 +6,7 @@ import './App.css'
 import Header from "./components/general-components/Header"
 import LiveGame from "./components/controller-components/LiveGame"
 import UserInfo from "./components/controller-components/UserInfo"
-import { ColorContextProvider } from "./components/context-components/ColorContext"
+import { ColorContextProvider } from "./context/ColorContext"
 
 function App(): ReactElement {
   

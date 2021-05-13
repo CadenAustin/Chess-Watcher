@@ -1,24 +1,25 @@
 import { useCallback, useState } from "react";
 
 //use{name} for hook convention
-export const useGetUser = (username: string): [
-    data: any | undefined,
+export const useGetUser = (): [
+    user: any | undefined,
     loading: boolean,
     error: boolean,
-    fetchData: () => Promise<any>
+    fetchUser: (username: string) => Promise<any>
 ] => {
-    const [data, setData] = useState<any>();
+    const [user, setUser] = useState<any>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const fetchUser = useCallback(async () => {
+    const fetchUser = useCallback(async (username: string) => {
         try {
             const res = await fetch("https://lichess.org/api/user/"+username)
 
             if (res){
                 if (res.ok === true){
                     //await json
-                    setData(res.json())
+                    const jsonData = await res.json()
+                    setUser(jsonData)
                 }
                 setLoading(false);
             }
@@ -30,7 +31,7 @@ export const useGetUser = (username: string): [
             return;
         }
         
-    }, [username]);
+    }, []);
 
-    return [data, loading, error, fetchUser]
+    return [user, loading, error, fetchUser]
 }

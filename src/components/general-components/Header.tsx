@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Headline, LabeledInput } from '@itwin/itwinui-react'
 
-import { useColorContext } from '../context-components/ColorContext'
+import { useColorContext } from '../../context/ColorContext'
 import "./Header.css"
 
 function Header(): ReactElement {
